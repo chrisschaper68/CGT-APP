@@ -37,14 +37,15 @@ async function getAIReframe() {
             body: JSON.stringify({ thought })
         });
 
-        if (!response.ok) {
-            throw new Error(`Fout bij API-aanroep: ${response.status}`);
-        }
-
         const data = await response.json();
-        suggestionDiv.innerHTML = `<p>Herformuleerde gedachte: ${data.reframe}</p>`;
+        if (response.ok) {
+            suggestionDiv.innerHTML = `<p>Herformuleerde gedachte: ${data.reframe}</p>`;
+        } else {
+            console.error("API error:", data.error);
+            suggestionDiv.innerHTML = "<p>Er is een fout opgetreden bij het ophalen van de herformulering.</p>";
+        }
     } catch (error) {
-        console.error("API call error for reframe:", error);
+        console.error("API-aanroep fout:", error);
         suggestionDiv.innerHTML = "<p>Er is een fout opgetreden bij het ophalen van de herformulering.</p>";
     }
 }
@@ -62,7 +63,7 @@ async function askAIQuestion() {
     responseDiv.innerHTML = "<p>Bezig met het ophalen van het antwoord...</p>";
 
     try {
-        const response = await fetch("/api/getAnswer", {
+        const response = await fetch("/api/askQuestion", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -70,20 +71,22 @@ async function askAIQuestion() {
             body: JSON.stringify({ question })
         });
 
-        if (!response.ok) {
-            throw new Error(`Fout bij API-aanroep: ${response.status}`);
-        }
-
         const data = await response.json();
-        responseDiv.innerHTML = `<p>Antwoord: ${data.answer}</p>`;
+        if (response.ok) {
+            responseDiv.innerHTML = `<p>Antwoord: ${data.answer}</p>`;
+        } else {
+            console.error("API error:", data.error);
+            responseDiv.innerHTML = "<p>Er is een fout opgetreden bij het ophalen van het antwoord.</p>";
+        }
     } catch (error) {
-        console.error("API call error for question:", error);
+        console.error("API-aanroep fout:", error);
         responseDiv.innerHTML = "<p>Er is een fout opgetreden bij het ophalen van het antwoord.</p>";
     }
 }
 
-// Ademhalingsoefening
+// Ademhalingsoefening starten met animatie
 function startBreathingExercise() {
     const breathCircle = document.getElementById("breath-circle");
     breathCircle.style.animation = "breathing 6s ease-in-out infinite";
 }
+
