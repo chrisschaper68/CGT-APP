@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #4a90e2;
+    text-align: center;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+#mood-check input[type="range"] {
+    width: 100%;
+}
+
+#reframe-suggestion, #ai-response {
+    margin-top: 15px;
+    padding: 10px;
+    background: #e0f7fa;
+    border-radius: 5px;
+}
+
+#breath-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #4a90e2;
+    border-radius: 50%;
+    margin: 20px auto;
+}
+
+@keyframes breathing {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+}
