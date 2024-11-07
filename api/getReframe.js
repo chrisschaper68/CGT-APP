@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-    // Zorg ervoor dat de juiste API-sleutel wordt gebruikt
+    // Haal de API-sleutel op uit de omgeving
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
@@ -25,3 +25,4 @@ export default async function handler(req, res) {
         res.status(500).json({ error: 'Fout bij het ophalen van de herformulering' });
     }
 }
+
