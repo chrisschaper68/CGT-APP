@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
     // API-sleutel van OpenAI
-    const apiKey = "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";
+    const apiKey = "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";
 
     // Controleer of er een gedachte is om te herformuleren
     const thought = req.body.thought;
