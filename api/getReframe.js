@@ -1,20 +1,16 @@
 export default async function handler(req, res) {
-    // Haal de API-sleutel uit de omgevingsvariabele
     const apiKey = process.env.OPENAI_API_KEY;
 
-    // Controleer of de API-sleutel beschikbaar is
     if (!apiKey) {
         return res.status(500).json({ error: "API-sleutel niet gevonden in omgevingsvariabele." });
     }
 
-    // Controleer of er een gedachte is om te herformuleren
     const thought = req.body.thought;
     if (!thought) {
         return res.status(400).json({ error: "Geen gedachte ingevoerd om te herformuleren." });
     }
 
     try {
-        // Verstuur de API-aanvraag naar OpenAI
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -23,7 +19,7 @@ export default async function handler(req, res) {
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: `Herformuleer deze gedachte: ${thought}` }],
+                messages: [{ role: "user", content: `Geef een positief alternatief voor de gedachte: "${thought}". Formuleer het op een bemoedigende manier.` }],
                 max_tokens: 50
             })
         });
@@ -42,5 +38,6 @@ export default async function handler(req, res) {
         res.status(500).json({ error: "Er is een fout opgetreden bij de API-aanroep." });
     }
 }
+
 
 
