@@ -1,6 +1,11 @@
 export default async function handler(req, res) {
-    // API-sleutel van OpenAI
-    const apiKey = "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";
+    // Haal de API-sleutel uit de omgevingsvariabele
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    // Controleer of de API-sleutel beschikbaar is
+    if (!apiKey) {
+        return res.status(500).json({ error: "API-sleutel niet gevonden in omgevingsvariabele." });
+    }
 
     // Controleer of er een gedachte is om te herformuleren
     const thought = req.body.thought;
@@ -24,7 +29,7 @@ export default async function handler(req, res) {
         });
 
         const data = await response.json();
-        
+
         if (response.ok) {
             const reframe = data.choices[0].message.content;
             res.status(200).json({ reframe });
@@ -37,4 +42,5 @@ export default async function handler(req, res) {
         res.status(500).json({ error: "Er is een fout opgetreden bij de API-aanroep." });
     }
 }
+
 
