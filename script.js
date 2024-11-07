@@ -37,9 +37,14 @@ async function getAIReframe() {
             body: JSON.stringify({ thought })
         });
 
+        if (!response.ok) {
+            throw new Error(`Fout bij API-aanroep: ${response.status}`);
+        }
+
         const data = await response.json();
         suggestionDiv.innerHTML = `<p>Herformuleerde gedachte: ${data.reframe}</p>`;
     } catch (error) {
+        console.error("API call error for reframe:", error);
         suggestionDiv.innerHTML = "<p>Er is een fout opgetreden bij het ophalen van de herformulering.</p>";
     }
 }
@@ -65,9 +70,14 @@ async function askAIQuestion() {
             body: JSON.stringify({ question })
         });
 
+        if (!response.ok) {
+            throw new Error(`Fout bij API-aanroep: ${response.status}`);
+        }
+
         const data = await response.json();
         responseDiv.innerHTML = `<p>Antwoord: ${data.answer}</p>`;
     } catch (error) {
+        console.error("API call error for question:", error);
         responseDiv.innerHTML = "<p>Er is een fout opgetreden bij het ophalen van het antwoord.</p>";
     }
 }
