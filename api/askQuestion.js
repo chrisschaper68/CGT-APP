@@ -19,8 +19,11 @@ export default async function handler(req, res) {
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: `Beantwoord deze vraag over mentale gezondheid: "${question}"` }],
-                max_tokens: 100
+                messages: [{ 
+                    role: "user", 
+                    content: `Je bent een ervaren psycholoog en burnoutcoach. Beantwoord deze vraag over mentale gezondheid als een deskundige in de gezondheidszorg: "${question}" en geef advies op een empathische en ondersteunende manier.` 
+                }],
+                max_tokens: 500  // Langere antwoorden mogelijk maken
             })
         });
 
@@ -38,3 +41,4 @@ export default async function handler(req, res) {
         res.status(500).json({ error: "Er is een fout opgetreden bij de API-aanroep." });
     }
 }
+
