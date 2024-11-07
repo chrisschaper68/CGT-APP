@@ -1,20 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CGT Tool</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGT Tool voor Mentale Gezondheid</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -41,7 +31,15 @@
             <select id="example-thoughts">
                 <option value="">Kies een voorbeeldgedachte...</option>
                 <option value="Ik ben niet goed genoeg.">Ik ben niet goed genoeg.</option>
-                <!-- Voeg meer gedachten toe indien gewenst -->
+                <option value="Ik maak altijd fouten.">Ik maak altijd fouten.</option>
+                <option value="Ik heb geen controle over mijn leven.">Ik heb geen controle over mijn leven.</option>
+                <option value="Mensen vinden mij niet aardig.">Mensen vinden mij niet aardig.</option>
+                <option value="Ik zal nooit succesvol zijn.">Ik zal nooit succesvol zijn.</option>
+                <option value="Ik ben te gestrest om iets te bereiken.">Ik ben te gestrest om iets te bereiken.</option>
+                <option value="Ik faal overal in.">Ik faal overal in.</option>
+                <option value="Mijn toekomst ziet er somber uit.">Mijn toekomst ziet er somber uit.</option>
+                <option value="Ik voel me waardeloos.">Ik voel me waardeloos.</option>
+                <option value="Niemand begrijpt mij.">Niemand begrijpt mij.</option>
             </select>
             <input type="text" id="reframe-input" placeholder="Of voer je eigen gedachte in...">
             <button onclick="getAIReframe()">Herformuleer Gedachte</button>
@@ -54,7 +52,15 @@
             <select id="example-questions">
                 <option value="">Kies een voorbeeldvraag...</option>
                 <option value="Hoe kan ik omgaan met stress?">Hoe kan ik omgaan met stress?</option>
-                <!-- Voeg meer vragen toe indien gewenst -->
+                <option value="Wat kan ik doen om mijn zelfvertrouwen te vergroten?">Wat kan ik doen om mijn zelfvertrouwen te vergroten?</option>
+                <option value="Hoe verminder ik mijn angstgevoelens?">Hoe verminder ik mijn angstgevoelens?</option>
+                <option value="Wat zijn enkele effectieve methoden voor meditatie?">Wat zijn enkele effectieve methoden voor meditatie?</option>
+                <option value="Hoe kan ik beter omgaan met kritiek?">Hoe kan ik beter omgaan met kritiek?</option>
+                <option value="Wat kan ik doen tegen negatieve gedachten?">Wat kan ik doen tegen negatieve gedachten?</option>
+                <option value="Hoe verbeter ik mijn concentratie?">Hoe verbeter ik mijn concentratie?</option>
+                <option value="Wat zijn manieren om mijn slaap te verbeteren?">Wat zijn manieren om mijn slaap te verbeteren?</option>
+                <option value="Hoe ga ik om met perfectionisme?">Hoe ga ik om met perfectionisme?</option>
+                <option value="Wat zijn tips om minder piekerig te zijn?">Wat zijn tips om minder piekerig te zijn?</option>
             </select>
             <input type="text" id="user-question" placeholder="Of voer je eigen vraag in...">
             <button onclick="askAIQuestion()">Stel Vraag</button>
@@ -101,8 +107,4 @@
     <script src="script.js"></script>
 </body>
 </html>
-<!-- partial -->
-  <script  src="./script.js"></script>
 
-</body>
-</html>
