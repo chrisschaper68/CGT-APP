@@ -1,46 +1,44 @@
-export default async function handler(req, res) {
-    const apiKey = process.env.OPENAI_API_KEY;
+const { Configuration, OpenAIApi } = require('openai');
+const dotenv = require('dotenv');
 
-    if (!apiKey) {
-        return res.status(500).json({ error: "API-sleutel niet gevonden in omgevingsvariabele." });
-    }
+dotenv.config(); // Laad je .env bestand met de API-sleutel
 
-    const thought = req.body.thought;
-    if (!thought) {
-        return res.status(400).json({ error: "Geen gedachte ingevoerd om te herformuleren." });
-    }
+const openai = new OpenAIApi(
+    new Configuration({
+        apiKey: process.env.OPENAI_API_KEY,
+    })
+);
+
+module.exports = async function (req, res) {
+    const { thought, feedback, comments } = req.body; // We halen ook feedback en comments op
 
     try {
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{ 
-                    role: "user", 
-                    content: `Je bent een burnoutcoach en psycholoog. Geef een gedetailleerd, positief alternatief voor de gedachte: "${thought}". Zorg ervoor dat het antwoord bemoedigend, volledig en nuttig is.` 
-                }],
-                max_tokens: 1000  // Verhoogd naar maximale lengte voor lange antwoorden
-            })
+        // Gedachten herformuleren via OpenAI
+        const reframeResponse = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: thought }]
         });
 
-        const data = await response.json();
+        // Vervolgadvies via OpenAI, afhankelijk van de feedback en comments
+        const adviceResponse = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: [{ 
+                role: "user", 
+                content: `Geef advies op basis van de feedback: ${feedback} en de opmerkingen: ${comments}` 
+            }]
+        });
 
-        if (response.ok) {
-            const reframe = data.choices[0].message.content;
-            res.status(200).json({ reframe });
-        } else {
-            console.error("Fout bij API-aanroep:", data);
-            res.status(response.status).json({ error: data.error.message });
-        }
+        // Stuur het herformuleerde gedachte en advies als antwoord
+        res.json({ 
+            reframe: reframeResponse.data.choices[0].message.content, 
+            advice: adviceResponse.data.choices[0].message.content 
+        });
     } catch (error) {
-        console.error("API-aanroep fout:", error);
-        res.status(500).json({ error: "Er is een fout opgetreden bij de API-aanroep." });
+        console.error("API Error in getReframe:", error.response ? error.response.data : error.message);
+        res.status(500).json({ error: "Er is een fout opgetreden bij het ophalen van de herformulering." });
     }
-}
+};
+
 
 
 
