@@ -1,0 +1,713 @@
+[debug] [2024-12-04T11:38:37.170Z] ----------------------------------------------------------------------
+[debug] [2024-12-04T11:38:37.172Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chsch\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-12-04T11:38:37.173Z] CLI Version:   13.27.0
+[debug] [2024-12-04T11:38:37.173Z] Platform:      win32
+[debug] [2024-12-04T11:38:37.173Z] Node Version:  v18.20.5
+[debug] [2024-12-04T11:38:37.174Z] Time:          Wed Dec 04 2024 12:38:37 GMT+0100 (Midden-Europese standaardtijd)
+[debug] [2024-12-04T11:38:37.174Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-04T11:38:37.238Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-04T11:38:37.238Z] > authorizing via signed-in user (chschaper@gmail.com)
+[debug] [2024-12-04T11:38:37.238Z] [iam] checking project mentalegezondheidapp for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-12-04T11:38:37.240Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:37.240Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:37.241Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions [none]
+[debug] [2024-12-04T11:38:37.241Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T11:38:37.241Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-12-04T11:38:38.506Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions 200
+[debug] [2024-12-04T11:38:38.506Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-12-04T11:38:38.507Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:38.507Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:38.507Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-12-04T11:38:38.507Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-12-04T11:38:39.198Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-12-04T11:38:39.198Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-12-04T11:38:39.199Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:39.199Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:39.200Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp [none]
+[debug] [2024-12-04T11:38:39.507Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp 200
+[debug] [2024-12-04T11:38:39.508Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp {"projectId":"mentalegezondheidapp","projectNumber":"633303886567","displayName":"MentaleGezondheidApp","name":"projects/mentalegezondheidapp","resources":{"hostingSite":"mentalegezondheidapp"},"state":"ACTIVE","etag":"1_4199c183-8909-453c-933d-d48af2fc939b"}
+[info] 
+[info] === Deploying to 'mentalegezondheidapp'...
+[info] 
+[info] i  deploying functions, hosting 
+[info] Running command: npm --prefix "$RESOURCE_DIR" install
+[info] +  functions: Finished running predeploy script. 
+[debug] [2024-12-04T11:38:41.557Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:41.558Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:41.558Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp [none]
+[debug] [2024-12-04T11:38:42.267Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp 200
+[debug] [2024-12-04T11:38:42.267Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp {"projectNumber":"633303886567","projectId":"mentalegezondheidapp","lifecycleState":"ACTIVE","name":"MentaleGezondheidApp","labels":{"firebase":"enabled"},"createTime":"2024-11-07T15:50:54.357620Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2024-12-04T11:38:42.269Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:42.269Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:42.269Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:42.269Z] Checked if tokens are valid: true, expires at: 1733315823752
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2024-12-04T11:38:42.269Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:42.269Z] Checked if tokens are valid: true, expires at: 1733315823752
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-12-04T11:38:42.270Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:42.270Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:42.270Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-04T11:38:42.270Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T11:38:42.271Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-12-04T11:38:42.271Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T11:38:42.272Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com [none]
+[debug] [2024-12-04T11:38:42.272Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T11:38:42.272Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com [none]
+[debug] [2024-12-04T11:38:42.272Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T11:38:43.119Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com 200
+[debug] [2024-12-04T11:38:43.119Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-12-04T11:38:43.132Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com 200
+[debug] [2024-12-04T11:38:43.133Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-12-04T11:38:43.146Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com 200
+[debug] [2024-12-04T11:38:43.146Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-12-04T11:38:43.165Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-04T11:38:43.166Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-12-04T11:38:43.166Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.166Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.166Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig [none]
+[debug] [2024-12-04T11:38:43.472Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig 200
+[debug] [2024-12-04T11:38:43.472Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig {"projectId":"mentalegezondheidapp","storageBucket":"mentalegezondheidapp.firebasestorage.app"}
+[debug] [2024-12-04T11:38:43.472Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.472Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.472Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs [none]
+[debug] [2024-12-04T11:38:43.719Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs 200
+[debug] [2024-12-04T11:38:43.719Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs {"configs":[{"name":"projects/mentalegezondheidapp/configs/email"},{"name":"projects/mentalegezondheidapp/configs/openai"}]}
+[debug] [2024-12-04T11:38:43.719Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.719Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.719Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.719Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.719Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables [none]
+[debug] [2024-12-04T11:38:43.721Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables [none]
+[debug] [2024-12-04T11:38:43.960Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables 200
+[debug] [2024-12-04T11:38:43.960Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables {"variables":[{"name":"projects/mentalegezondheidapp/configs/openai/variables/api_key","updateTime":"2024-12-03T15:57:24.357340100Z"}]}
+[debug] [2024-12-04T11:38:43.960Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.961Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.961Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key [none]
+[debug] [2024-12-04T11:38:43.980Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables 200
+[debug] [2024-12-04T11:38:43.980Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables {"variables":[{"name":"projects/mentalegezondheidapp/configs/email/variables/pass","updateTime":"2024-11-30T10:26:22.287625937Z"},{"name":"projects/mentalegezondheidapp/configs/email/variables/user","updateTime":"2024-11-30T10:26:22.287032024Z"}]}
+[debug] [2024-12-04T11:38:43.980Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.980Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.981Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.981Z] Checked if tokens are valid: true, expires at: 1733315823752
+[debug] [2024-12-04T11:38:43.981Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass [none]
+[debug] [2024-12-04T11:38:43.982Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user [none]
+[debug] [2024-12-04T11:38:44.225Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key 200
+[debug] [2024-12-04T11:38:44.225Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key {"name":"projects/mentalegezondheidapp/configs/openai/variables/api_key","updateTime":"2024-12-03T15:57:24.357340100Z","text":"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"}
+[debug] [2024-12-04T11:38:44.229Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user 200
+[debug] [2024-12-04T11:38:44.230Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user {"name":"projects/mentalegezondheidapp/configs/email/variables/user","updateTime":"2024-11-30T10:26:22.287032024Z","text":"chschaper@gmail.com"}
+[debug] [2024-12-04T11:38:44.241Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass 200
+[debug] [2024-12-04T11:38:44.241Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass {"name":"projects/mentalegezondheidapp/configs/email/variables/pass","updateTime":"2024-11-30T10:26:22.287625937Z","text":"zevi unob sczx ksmg"}
+[debug] [2024-12-04T11:38:44.243Z] Validating nodejs source
+[debug] [2024-12-04T11:38:45.477Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "firebase-admin": "^12.7.0",
+    "firebase-functions": "^6.1.1",
+    "mentalegezondheidapp": "file:..",
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "private": true
+}
+[debug] [2024-12-04T11:38:45.477Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-12-04T11:38:45.479Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-12-04T11:38:45.486Z] Found firebase-functions binary at 'C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8539
+
+[error] node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::8539
+    at Server.setupListenHandle [as _listen2] (node:net:1817:16)
+    at listenInCluster (node:net:1865:12)
+    at Server.listen (node:net:1953:7)
+    at Function.listen (C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\index.js:100:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1844:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8539
+}
+
+Node.js v18.20.5
+
+[debug] [2024-12-04T11:38:46.302Z] Failed to call quitquitquit. This often means the server failed to start request to http://localhost:8539/__/quitquitquit failed, reason: connect ECONNREFUSED ::1:8539 {"message":"request to http://localhost:8539/__/quitquitquit failed, reason: connect ECONNREFUSED ::1:8539","type":"system","errno":"ECONNREFUSED","code":"ECONNREFUSED"}
+[debug] [2024-12-04T11:38:46.388Z] FetchError: request to http://127.0.0.1:8539/__/functions.yaml failed, reason: read ECONNRESET
+    at ClientRequest.<anonymous> (C:\Users\chsch\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\node-fetch\lib\index.js:1501:11)
+    at ClientRequest.emit (node:events:517:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at Socket.socketErrorListener (node:_http_client:501:9)
+    at Socket.emit (node:events:517:28)
+    at Socket.emit (node:domain:489:12)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-12-04T13:21:51.878Z] ----------------------------------------------------------------------
+[debug] [2024-12-04T13:21:51.880Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chsch\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2024-12-04T13:21:51.880Z] CLI Version:   13.27.0
+[debug] [2024-12-04T13:21:51.881Z] Platform:      win32
+[debug] [2024-12-04T13:21:51.881Z] Node Version:  v18.20.5
+[debug] [2024-12-04T13:21:51.882Z] Time:          Wed Dec 04 2024 14:21:51 GMT+0100 (Midden-Europese standaardtijd)
+[debug] [2024-12-04T13:21:51.882Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-04T13:21:51.942Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-04T13:21:51.942Z] > authorizing via signed-in user (chschaper@gmail.com)
+[debug] [2024-12-04T13:21:51.942Z] [iam] checking project mentalegezondheidapp for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-12-04T13:21:51.943Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:51.944Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:51.945Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions [none]
+[debug] [2024-12-04T13:21:51.945Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:21:51.945Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-12-04T13:21:52.656Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions 200
+[debug] [2024-12-04T13:21:52.657Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-12-04T13:21:52.657Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:52.657Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:52.657Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-12-04T13:21:52.657Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-12-04T13:21:53.338Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-12-04T13:21:53.338Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'mentalegezondheidapp'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" install
+[info] +  functions: Finished running predeploy script. 
+[debug] [2024-12-04T13:21:55.313Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:55.313Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:55.313Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp [none]
+[debug] [2024-12-04T13:21:56.023Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp 200
+[debug] [2024-12-04T13:21:56.023Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp {"projectNumber":"633303886567","projectId":"mentalegezondheidapp","lifecycleState":"ACTIVE","name":"MentaleGezondheidApp","labels":{"firebase":"enabled"},"createTime":"2024-11-07T15:50:54.357620Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2024-12-04T13:21:56.025Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:56.025Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:56.026Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:56.026Z] Checked if tokens are valid: true, expires at: 1733321418849
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2024-12-04T13:21:56.026Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:56.027Z] Checked if tokens are valid: true, expires at: 1733321418849
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-12-04T13:21:56.027Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:56.027Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:56.027Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-04T13:21:56.027Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:21:56.028Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-12-04T13:21:56.028Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:21:56.029Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com [none]
+[debug] [2024-12-04T13:21:56.029Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:21:56.030Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com [none]
+[debug] [2024-12-04T13:21:56.030Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:21:56.947Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com 200
+[debug] [2024-12-04T13:21:56.947Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-12-04T13:21:56.948Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-04T13:21:56.948Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-12-04T13:21:56.976Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com 200
+[debug] [2024-12-04T13:21:56.977Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-12-04T13:21:56.979Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com 200
+[debug] [2024-12-04T13:21:56.980Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-12-04T13:21:56.980Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:56.980Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:56.980Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig [none]
+[debug] [2024-12-04T13:21:57.340Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig 200
+[debug] [2024-12-04T13:21:57.340Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig {"projectId":"mentalegezondheidapp","storageBucket":"mentalegezondheidapp.firebasestorage.app"}
+[debug] [2024-12-04T13:21:57.340Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.340Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.340Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs [none]
+[debug] [2024-12-04T13:21:57.600Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs 200
+[debug] [2024-12-04T13:21:57.601Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs {"configs":[{"name":"projects/mentalegezondheidapp/configs/email"},{"name":"projects/mentalegezondheidapp/configs/openai"}]}
+[debug] [2024-12-04T13:21:57.601Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.601Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.601Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.601Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.601Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables [none]
+[debug] [2024-12-04T13:21:57.603Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables [none]
+[debug] [2024-12-04T13:21:57.847Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables 200
+[debug] [2024-12-04T13:21:57.847Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables {"variables":[{"name":"projects/mentalegezondheidapp/configs/email/variables/user","updateTime":"2024-11-30T10:26:22.287032024Z"},{"name":"projects/mentalegezondheidapp/configs/email/variables/pass","updateTime":"2024-11-30T10:26:22.287625937Z"}]}
+[debug] [2024-12-04T13:21:57.847Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.847Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.848Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.848Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.848Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user [none]
+[debug] [2024-12-04T13:21:57.849Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass [none]
+[debug] [2024-12-04T13:21:57.851Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables 200
+[debug] [2024-12-04T13:21:57.851Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables {"variables":[{"name":"projects/mentalegezondheidapp/configs/openai/variables/api_key","updateTime":"2024-12-04T11:51:14.692892732Z"}]}
+[debug] [2024-12-04T13:21:57.852Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.852Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:21:57.852Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key [none]
+[debug] [2024-12-04T13:21:58.074Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass 200
+[debug] [2024-12-04T13:21:58.074Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass {"name":"projects/mentalegezondheidapp/configs/email/variables/pass","updateTime":"2024-11-30T10:26:22.287625937Z","text":"zevi unob sczx ksmg"}
+[debug] [2024-12-04T13:21:58.075Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key 200
+[debug] [2024-12-04T13:21:58.075Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key {"name":"projects/mentalegezondheidapp/configs/openai/variables/api_key","updateTime":"2024-12-04T11:51:14.692892732Z","text":"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"}
+[debug] [2024-12-04T13:21:58.081Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user 200
+[debug] [2024-12-04T13:21:58.081Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user {"name":"projects/mentalegezondheidapp/configs/email/variables/user","updateTime":"2024-11-30T10:26:22.287032024Z","text":"chschaper@gmail.com"}
+[debug] [2024-12-04T13:21:58.083Z] Validating nodejs source
+[debug] [2024-12-04T13:21:59.230Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "firebase-admin": "^12.7.0",
+    "firebase-functions": "^6.1.1",
+    "mentalegezondheidapp": "file:..",
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "private": true
+}
+[debug] [2024-12-04T13:21:59.231Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-12-04T13:21:59.232Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-12-04T13:21:59.238Z] Found firebase-functions binary at 'C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8522
+
+[error] node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::8522
+    at Server.setupListenHandle [as _listen2] (node:net:1817:16)
+    at listenInCluster (node:net:1865:12)
+    at Server.listen (node:net:1953:7)
+    at Function.listen (C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\index.js:100:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1844:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8522
+}
+
+Node.js v18.20.5
+
+[debug] [2024-12-04T13:21:59.983Z] Failed to call quitquitquit. This often means the server failed to start request to http://localhost:8522/__/quitquitquit failed, reason: connect ECONNREFUSED ::1:8522 {"message":"request to http://localhost:8522/__/quitquitquit failed, reason: connect ECONNREFUSED ::1:8522","type":"system","errno":"ECONNREFUSED","code":"ECONNREFUSED"}
+[debug] [2024-12-04T13:22:00.061Z] FetchError: request to http://127.0.0.1:8522/__/functions.yaml failed, reason: read ECONNRESET
+    at ClientRequest.<anonymous> (C:\Users\chsch\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\node-fetch\lib\index.js:1501:11)
+    at ClientRequest.emit (node:events:517:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at Socket.socketErrorListener (node:_http_client:501:9)
+    at Socket.emit (node:events:517:28)
+    at Socket.emit (node:domain:489:12)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-12-04T13:25:00.735Z] ----------------------------------------------------------------------
+[debug] [2024-12-04T13:25:00.737Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chsch\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2024-12-04T13:25:00.737Z] CLI Version:   13.27.0
+[debug] [2024-12-04T13:25:00.737Z] Platform:      win32
+[debug] [2024-12-04T13:25:00.738Z] Node Version:  v18.20.5
+[debug] [2024-12-04T13:25:00.739Z] Time:          Wed Dec 04 2024 14:25:00 GMT+0100 (Midden-Europese standaardtijd)
+[debug] [2024-12-04T13:25:00.739Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-04T13:25:00.798Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-04T13:25:00.799Z] > authorizing via signed-in user (chschaper@gmail.com)
+[debug] [2024-12-04T13:25:00.799Z] [iam] checking project mentalegezondheidapp for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-12-04T13:25:00.800Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:00.800Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:00.801Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions [none]
+[debug] [2024-12-04T13:25:00.801Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:25:00.801Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-12-04T13:25:01.040Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions 200
+[debug] [2024-12-04T13:25:01.040Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-12-04T13:25:01.040Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:01.040Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:01.040Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-12-04T13:25:01.040Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-12-04T13:25:01.721Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-12-04T13:25:01.721Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'mentalegezondheidapp'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" install
+[info] +  functions: Finished running predeploy script. 
+[debug] [2024-12-04T13:25:03.751Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:03.751Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:03.751Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp [none]
+[debug] [2024-12-04T13:25:04.469Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp 200
+[debug] [2024-12-04T13:25:04.469Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp {"projectNumber":"633303886567","projectId":"mentalegezondheidapp","lifecycleState":"ACTIVE","name":"MentaleGezondheidApp","labels":{"firebase":"enabled"},"createTime":"2024-11-07T15:50:54.357620Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2024-12-04T13:25:04.470Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:04.470Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:04.470Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:04.470Z] Checked if tokens are valid: true, expires at: 1733321418849
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2024-12-04T13:25:04.471Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:04.471Z] Checked if tokens are valid: true, expires at: 1733321418849
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-12-04T13:25:04.471Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:04.471Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:04.471Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-04T13:25:04.471Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:25:04.472Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-12-04T13:25:04.473Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:25:04.473Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com [none]
+[debug] [2024-12-04T13:25:04.473Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:25:04.474Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com [none]
+[debug] [2024-12-04T13:25:04.474Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:25:05.338Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com 200
+[debug] [2024-12-04T13:25:05.338Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-12-04T13:25:05.339Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com 200
+[debug] [2024-12-04T13:25:05.339Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-12-04T13:25:05.341Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com 200
+[debug] [2024-12-04T13:25:05.341Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-12-04T13:25:05.344Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-04T13:25:05.344Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-12-04T13:25:05.344Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:05.344Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:05.344Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig [none]
+[debug] [2024-12-04T13:25:05.630Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig 200
+[debug] [2024-12-04T13:25:05.630Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig {"projectId":"mentalegezondheidapp","storageBucket":"mentalegezondheidapp.firebasestorage.app"}
+[debug] [2024-12-04T13:25:05.630Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:05.630Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:05.630Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs [none]
+[debug] [2024-12-04T13:25:05.871Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs 200
+[debug] [2024-12-04T13:25:05.872Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs {"configs":[{"name":"projects/mentalegezondheidapp/configs/openai"},{"name":"projects/mentalegezondheidapp/configs/email"}]}
+[debug] [2024-12-04T13:25:05.872Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:05.872Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:05.872Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:05.872Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:05.872Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables [none]
+[debug] [2024-12-04T13:25:05.874Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables [none]
+[debug] [2024-12-04T13:25:06.111Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables 200
+[debug] [2024-12-04T13:25:06.111Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables {"variables":[{"name":"projects/mentalegezondheidapp/configs/email/variables/pass","updateTime":"2024-11-30T10:26:22.287625937Z"},{"name":"projects/mentalegezondheidapp/configs/email/variables/user","updateTime":"2024-11-30T10:26:22.287032024Z"}]}
+[debug] [2024-12-04T13:25:06.111Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:06.112Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:06.112Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:06.112Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:06.112Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass [none]
+[debug] [2024-12-04T13:25:06.113Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user [none]
+[debug] [2024-12-04T13:25:06.115Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables 200
+[debug] [2024-12-04T13:25:06.115Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables {"variables":[{"name":"projects/mentalegezondheidapp/configs/openai/variables/api_key","updateTime":"2024-12-04T11:51:14.692892732Z"}]}
+[debug] [2024-12-04T13:25:06.115Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:06.115Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:25:06.115Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key [none]
+[debug] [2024-12-04T13:25:06.363Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key 200
+[debug] [2024-12-04T13:25:06.363Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key {"name":"projects/mentalegezondheidapp/configs/openai/variables/api_key","updateTime":"2024-12-04T11:51:14.692892732Z","text":"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"}
+[debug] [2024-12-04T13:25:06.364Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass 200
+[debug] [2024-12-04T13:25:06.364Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass {"name":"projects/mentalegezondheidapp/configs/email/variables/pass","updateTime":"2024-11-30T10:26:22.287625937Z","text":"zevi unob sczx ksmg"}
+[debug] [2024-12-04T13:25:06.364Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user 200
+[debug] [2024-12-04T13:25:06.364Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user {"name":"projects/mentalegezondheidapp/configs/email/variables/user","updateTime":"2024-11-30T10:26:22.287032024Z","text":"chschaper@gmail.com"}
+[debug] [2024-12-04T13:25:06.366Z] Validating nodejs source
+[debug] [2024-12-04T13:25:07.531Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "firebase-admin": "^12.7.0",
+    "firebase-functions": "^6.1.1",
+    "mentalegezondheidapp": "file:..",
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "private": true
+}
+[debug] [2024-12-04T13:25:07.531Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-12-04T13:25:07.532Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-12-04T13:25:07.539Z] Found firebase-functions binary at 'C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8797
+
+[error] node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::8797
+    at Server.setupListenHandle [as _listen2] (node:net:1817:16)
+    at listenInCluster (node:net:1865:12)
+    at Server.listen (node:net:1953:7)
+    at Function.listen (C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\index.js:100:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1844:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8797
+}
+
+Node.js v18.20.5
+
+[debug] [2024-12-04T13:25:08.306Z] Failed to call quitquitquit. This often means the server failed to start request to http://localhost:8797/__/quitquitquit failed, reason: connect ECONNREFUSED ::1:8797 {"message":"request to http://localhost:8797/__/quitquitquit failed, reason: connect ECONNREFUSED ::1:8797","type":"system","errno":"ECONNREFUSED","code":"ECONNREFUSED"}
+[debug] [2024-12-04T13:25:08.403Z] FetchError: request to http://127.0.0.1:8797/__/functions.yaml failed, reason: read ECONNRESET
+    at ClientRequest.<anonymous> (C:\Users\chsch\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\node-fetch\lib\index.js:1501:11)
+    at ClientRequest.emit (node:events:517:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at Socket.socketErrorListener (node:_http_client:501:9)
+    at Socket.emit (node:events:517:28)
+    at Socket.emit (node:domain:489:12)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2024-12-04T13:40:35.936Z] ----------------------------------------------------------------------
+[debug] [2024-12-04T13:40:35.938Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\chsch\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2024-12-04T13:40:35.938Z] CLI Version:   13.27.0
+[debug] [2024-12-04T13:40:35.938Z] Platform:      win32
+[debug] [2024-12-04T13:40:35.938Z] Node Version:  v18.20.5
+[debug] [2024-12-04T13:40:35.939Z] Time:          Wed Dec 04 2024 14:40:35 GMT+0100 (Midden-Europese standaardtijd)
+[debug] [2024-12-04T13:40:35.940Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-12-04T13:40:36.000Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-12-04T13:40:36.000Z] > authorizing via signed-in user (chschaper@gmail.com)
+[debug] [2024-12-04T13:40:36.000Z] [iam] checking project mentalegezondheidapp for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-12-04T13:40:36.001Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:36.001Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:36.002Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions [none]
+[debug] [2024-12-04T13:40:36.003Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:40:36.003Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-12-04T13:40:36.728Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions 200
+[debug] [2024-12-04T13:40:36.729Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-12-04T13:40:36.729Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:36.729Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:36.729Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-12-04T13:40:36.729Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-12-04T13:40:37.418Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-12-04T13:40:37.418Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/mentalegezondheidapp/serviceAccounts/mentalegezondheidapp@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'mentalegezondheidapp'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" install
+[info] +  functions: Finished running predeploy script. 
+[debug] [2024-12-04T13:40:39.532Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:39.535Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:39.536Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp [none]
+[debug] [2024-12-04T13:40:40.243Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp 200
+[debug] [2024-12-04T13:40:40.243Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/mentalegezondheidapp {"projectNumber":"633303886567","projectId":"mentalegezondheidapp","lifecycleState":"ACTIVE","name":"MentaleGezondheidApp","labels":{"firebase":"enabled"},"createTime":"2024-11-07T15:50:54.357620Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2024-12-04T13:40:40.245Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:40.245Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:40.245Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:40.245Z] Checked if tokens are valid: true, expires at: 1733321418849
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2024-12-04T13:40:40.246Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:40.246Z] Checked if tokens are valid: true, expires at: 1733321418849
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-12-04T13:40:40.246Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:40.246Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:40.246Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-12-04T13:40:40.246Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:40:40.248Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-12-04T13:40:40.248Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:40:40.249Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com [none]
+[debug] [2024-12-04T13:40:40.249Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:40:40.250Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com [none]
+[debug] [2024-12-04T13:40:40.250Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com x-goog-quota-user=projects/mentalegezondheidapp
+[debug] [2024-12-04T13:40:41.104Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com 200
+[debug] [2024-12-04T13:40:41.105Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-12-04T13:40:41.112Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com 200
+[debug] [2024-12-04T13:40:41.112Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-12-04T13:40:41.116Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com 200
+[debug] [2024-12-04T13:40:41.117Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-12-04T13:40:41.122Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com 200
+[debug] [2024-12-04T13:40:41.122Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mentalegezondheidapp/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-12-04T13:40:41.123Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.123Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.123Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig [none]
+[debug] [2024-12-04T13:40:41.460Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig 200
+[debug] [2024-12-04T13:40:41.460Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mentalegezondheidapp/adminSdkConfig {"projectId":"mentalegezondheidapp","storageBucket":"mentalegezondheidapp.firebasestorage.app"}
+[debug] [2024-12-04T13:40:41.460Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.460Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.460Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs [none]
+[debug] [2024-12-04T13:40:41.700Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs 200
+[debug] [2024-12-04T13:40:41.700Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs {"configs":[{"name":"projects/mentalegezondheidapp/configs/openai"},{"name":"projects/mentalegezondheidapp/configs/email"}]}
+[debug] [2024-12-04T13:40:41.700Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.700Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.701Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.701Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.701Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables [none]
+[debug] [2024-12-04T13:40:41.702Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables [none]
+[debug] [2024-12-04T13:40:41.927Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables 200
+[debug] [2024-12-04T13:40:41.927Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables {"variables":[{"name":"projects/mentalegezondheidapp/configs/openai/variables/api_key","updateTime":"2024-12-04T11:51:14.692892732Z"}]}
+[debug] [2024-12-04T13:40:41.927Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.927Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:41.927Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key [none]
+[debug] [2024-12-04T13:40:42.040Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables 200
+[debug] [2024-12-04T13:40:42.040Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables {"variables":[{"name":"projects/mentalegezondheidapp/configs/email/variables/pass","updateTime":"2024-11-30T10:26:22.287625937Z"},{"name":"projects/mentalegezondheidapp/configs/email/variables/user","updateTime":"2024-11-30T10:26:22.287032024Z"}]}
+[debug] [2024-12-04T13:40:42.040Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:42.040Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:42.040Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:42.040Z] Checked if tokens are valid: true, expires at: 1733321418849
+[debug] [2024-12-04T13:40:42.040Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass [none]
+[debug] [2024-12-04T13:40:42.042Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user [none]
+[debug] [2024-12-04T13:40:42.159Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key 200
+[debug] [2024-12-04T13:40:42.159Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/openai/variables/api_key {"name":"projects/mentalegezondheidapp/configs/openai/variables/api_key","updateTime":"2024-12-04T11:51:14.692892732Z","text":"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"}
+[debug] [2024-12-04T13:40:42.266Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user 200
+[debug] [2024-12-04T13:40:42.266Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/user {"name":"projects/mentalegezondheidapp/configs/email/variables/user","updateTime":"2024-11-30T10:26:22.287032024Z","text":"chschaper@gmail.com"}
+[debug] [2024-12-04T13:40:42.288Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass 200
+[debug] [2024-12-04T13:40:42.288Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/mentalegezondheidapp/configs/email/variables/pass {"name":"projects/mentalegezondheidapp/configs/email/variables/pass","updateTime":"2024-11-30T10:26:22.287625937Z","text":"zevi unob sczx ksmg"}
+[debug] [2024-12-04T13:40:42.289Z] Validating nodejs source
+[debug] [2024-12-04T13:40:43.470Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "firebase-admin": "^12.7.0",
+    "firebase-functions": "^6.1.1",
+    "mentalegezondheidapp": "file:..",
+    "nodemailer": "^6.9.16"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "private": true
+}
+[debug] [2024-12-04T13:40:43.471Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-12-04T13:40:43.472Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-12-04T13:40:43.478Z] Found firebase-functions binary at 'C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8093
+
+[error] node:events:495
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::8093
+    at Server.setupListenHandle [as _listen2] (node:net:1817:16)
+    at listenInCluster (node:net:1865:12)
+    at Server.listen (node:net:1953:7)
+    at Function.listen (C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\node_modules\express\lib\application.js:635:24)
+    at Object.<anonymous> (C:\Users\chsch\Downloads\MentaleGezondheidApp\CGT-APP\functions\index.js:100:5)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Module.require (node:internal/modules/cjs/loader:1231:19)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1844:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 8093
+}
+
+Node.js v18.20.5
+
+[debug] [2024-12-04T13:40:44.231Z] Failed to call quitquitquit. This often means the server failed to start request to http://localhost:8093/__/quitquitquit failed, reason: connect ECONNREFUSED ::1:8093 {"message":"request to http://localhost:8093/__/quitquitquit failed, reason: connect ECONNREFUSED ::1:8093","type":"system","errno":"ECONNREFUSED","code":"ECONNREFUSED"}
+[debug] [2024-12-04T13:40:44.320Z] FetchError: request to http://127.0.0.1:8093/__/functions.yaml failed, reason: read ECONNRESET
+    at ClientRequest.<anonymous> (C:\Users\chsch\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\node-fetch\lib\index.js:1501:11)
+    at ClientRequest.emit (node:events:517:28)
+    at ClientRequest.emit (node:domain:489:12)
+    at Socket.socketErrorListener (node:_http_client:501:9)
+    at Socket.emit (node:events:517:28)
+    at Socket.emit (node:domain:489:12)
+    at emitErrorNT (node:internal/streams/destroy:151:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:116:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: An unexpected error has occurred.
