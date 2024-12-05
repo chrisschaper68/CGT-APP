@@ -2,9 +2,9 @@
   "name": "mentalegezondheidapp",
   "version": "1.0.0",
   "description": "Een applicatie voor mentale gezondheid",
-  "main": "server.js",
+  "main": "functions/server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node functions/server.js",
     "lint": "eslint ."
   },
   "keywords": [],
@@ -25,4 +25,3 @@
     "@vercel/node": "^1.11.1"
   }
 }
-
