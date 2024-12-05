@@ -1,52 +1,329 @@
+/* Algemene instellingen */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f4f8;
-    color: #333;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f9f5f2;
+    color: #5c3d2e;
     margin: 0;
     padding: 20px;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
+    box-sizing: border-box;
+    justify-content: center;
 }
 
+/* Container */
 .container {
+    width: 100%;
     max-width: 800px;
-    background: #ffffff;
+    background: #fffaf4;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: center;
+}
+/* Toegevoegde afbeelding boven de titel */
+.header-image {
+    display: block;
+    margin: 0 auto 20px; /* Automatisch centreren en marge onder de afbeelding */
+    max-width: 100%;     /* Zorg ervoor dat de afbeelding responsief is */
+    height: auto;        /* Zorg ervoor dat de hoogte proportioneel blijft */
 }
 
-h1 {
-    color: #4a90e2;
+/* Headers */
+h1, h2, h3 {
+    color: #8b5e3c;
+    text-align: center;
+    margin-bottom: 15px;
+    word-wrap: break-word;
+}
+
+/* Secties */
+section {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    box-sizing: border-box;
     text-align: center;
 }
 
-section {
-    margin-bottom: 20px;
-}
-
-#mood-check input[type="range"] {
+/* Formuliervelden */
+input, textarea, select {
     width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #d7c2b0;
+    border-radius: 8px;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    color: #5c3d2e;
+    box-sizing: border-box;
 }
 
-#reframe-suggestion, #ai-response {
-    margin-top: 15px;
-    padding: 10px;
-    background: #e0f7fa;
-    border-radius: 5px;
+textarea {
+    resize: vertical;
+}
+
+/* Knoppen */
+button {
+    background-color: #8b5e3c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #714731;
+}
+
+button:disabled {
+    background-color: #d7c2b0;
+    cursor: not-allowed;
+}
+
+/* Rustgevende afbeeldingen en video's */
+#calming-images img,
+#calming-videos video {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ademhalingsoefening */
+#breathing-exercise {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #breath-circle {
-    width: 100px;
-    height: 100px;
-    background-color: #4a90e2;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
+    background-color: #8b5e3c;
     margin: 20px auto;
+    display: block;
+    animation: none;
 }
 
-@keyframes breathing {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.5); }
+@keyframes breathingCycle {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
 }
+
+/* Slaaptool */
+#sleep-tool {
+    margin: 20px 0;
+    padding: 20px;
+    background: #fffaf4;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Fysieke klok */
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.clock {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 4px solid #8b5e3c;
+    border-radius: 50%;
+    background: #fffaf4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hour-hand {
+    position: absolute;
+    width: 4px;
+    height: 80px;
+    background-color: #8b5e3c;
+    top: calc(50% - 80px);
+    left: calc(50% - 2px);
+    transform-origin: bottom center;
+    transform: rotate(0deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.center-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #8b5e3c;
+    border-radius: 50%;
+    top: calc(50% - 5px);
+    left: calc(50% - 5px);
+}
+
+/* Tabelweergave */
+#sleep-data-section {
+    margin-top: 20px;
+    background: #fffaf4;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+thead th {
+    background-color: #8b5e3c;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #d7c2b0;
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f4e4d9;
+}
+
+/* Grafiek */
+#sleep-chart-section {
+    margin-top: 20px;
+    background: #fffaf4;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+
+/* Tooltips en meldingen */
+p {
+    margin: 5px 0;
+}
+
+/* Stemming en slider */
+#mood-check {
+    text-align: center;
+}
+
+#mood-meter {
+    width: 100%;
+    margin: 15px 0;
+}
+
+#mood-level {
+    font-weight: bold;
+    color: #8b5e3c;
+}
+
+/* Stemming afbeeldingen */
+#mood-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+#mood-images img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Resultaten */
+#reframe-suggestion, #ai-response {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f4e4d9;
+    border-radius: 8px;
+    border: 1px solid #d7c2b0;
+    box-sizing: border-box;
+}
+
+/* Feedback sectie */
+#result-section {
+    margin-top: 20px;
+    background: #fffaf4;
+    border: 1px solid #d7c2b0;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+
+    .clock {
+        width: 150px;
+        height: 150px;
+    }
+
+    .hour-hand {
+        height: 60px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    thead th, tbody td {
+        padding: 5px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
