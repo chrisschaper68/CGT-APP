@@ -5,25 +5,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CGT Tool voor Mentale Gezondheid</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase en Chart.js -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
+        <img src="/images/mentalegezondheiapp_boven.png" alt="CGT Tool Afbeelding" class="header-image">
+        
         <h1>CGT Tool voor Mentale Gezondheid</h1>
 
-        <!-- Stemming Check-in -->
-        <section id="mood-check">
-            <h2>Hoe voel je je vandaag?</h2>
-            <input type="range" id="mood-meter" min="1" max="10" value="5">
-            <p>Stemming: <span id="mood-level">5</span></p>
-        </section>
+        <!-- Google Sign-In -->
+        <button id="google-signin-btn">Aanmelden met Google</button>
+        
+
+       <!-- Stemming Check-in -->
+<section id="mood-check">
+    <h2>Hoe voel je je vandaag?</h2>
+    <!-- Afbeeldingen voor stemming -->
+    <div id="mood-images">
+        <img id="mood-happy" src="images/Ik_voel_me_dolgelukkig.svg" alt="Dolgelukkig" style="display:none;">
+        <img id="mood-good" src="images/Ik_voel_me_gelukkig.svg" alt="Gelukkig" style="display:none;">
+        <img id="mood-neutral" src="images/Ik_voel_me_neutraal.svg" alt="Neutraal" style="display:none;">
+        <img id="mood-sad" src="images/Ik_voel_me_verdrietig.svg" alt="Verdrietig" style="display:none;">
+        <img id="mood-depressed" src="images/ik_voel_me_depressief.svg" alt="Depressief" style="display:none;">
+    </div>
+    <!-- Slider en stemming -->
+    <input type="range" id="mood-meter" min="1" max="10" value="5">
+    <p>Stemming: <span id="mood-level">5</span></p>
+    <button id="save-mood-btn">Bewaar Stemming</button>
+</section>
+
+<!-- Stemming Grafieken -->
+<section id="mood-chart" style="display:none;">
+    <h2>Je Stemming door de Tijd</h2>
+    <canvas id="moodChart" width="400" height="200"></canvas>
+</section>
+<section id="mood-average-chart" style="display:none;">
+    <h2>Gemiddelde Stemming per Dag</h2>
+    <canvas id="moodAverageChart" width="400" height="200"></canvas>
+</section>
+
 
         <!-- Gedachtenlogboek -->
         <section id="thought-log">
             <h2>Gedachtenlogboek</h2>
             <textarea id="thought-input" placeholder="Schrijf hier je negatieve gedachte..."></textarea>
-            <button onclick="saveThought()">Bewaar Gedachte</button>
+            <button id="save-thought-btn">Bewaar Gedachte</button>
             <ul id="thought-list"></ul>
         </section>
+        <script>
+            document.getElementById("save-thought-btn").addEventListener("click", saveThought);
+        
+            async function saveThought() {
+                const thoughtInput = document.getElementById("thought-input").value;
+                const user = firebase.auth().currentUser;
+        
+                console.log("Gedachte invoer:", thoughtInput);
+                console.log("Ingelogde gebruiker:", user);
+        
+                if (thoughtInput && user) {
+                    const thoughtRef = firebase.firestore().collection("users").doc(user.uid).collection("thoughts");
+                    try {
+                        await thoughtRef.add({
+                            thought: thoughtInput,
+                            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                        });
+                        console.log("Gedachte succesvol opgeslagen!");
+                        document.getElementById("thought-input").value = "";
+                        alert("Gedachte opgeslagen!");
+                        loadThoughts(); // Herlaad de gedachten
+                    } catch (error) {
+                        console.error("Fout bij opslaan gedachte:", error);
+                        alert("Er is een fout opgetreden bij het opslaan.");
+                    }
+                } else {
+                    if (!user) {
+                        console.error("Geen gebruiker ingelogd.");
+                        alert("Log in om je gedachte op te slaan.");
+                    }
+                    if (!thoughtInput) {
+                        console.error("Geen gedachte ingevoerd.");
+                        alert("Voer een gedachte in om op te slaan.");
+                    }
+                }
+            }
+        
+            function loadThoughts() {
+                console.log("Loading thoughts..."); // Voeg deze toe als basisimplementatie of bouw het later verder uit.
+            }
+        </script>
+        
+        <!-- Dankbaarheid Sectie -->
+        <section id="gratitude-section">
+            <h2>Wat waardeer je vandaag?</h2>
+            <textarea id="gratitude-input" placeholder="Schrijf hier waar je dankbaar voor bent..."></textarea>
+            <button id="save-gratitude-btn">Bewaar Dankbaarheid</button>
+            <ul id="gratitude-list"></ul>
+        </section>
+
+ <!-- slaap Sectie -->
+ <!DOCTYPE html>
+ <html lang="nl">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Slaapdagboek</title>
+     <link rel="stylesheet" href="style.css">
+     <script src="script.js" defer></script>
+ </head>
+ <body>
+     <div class="container">
+         <h1>Mentale Gezondheid - Slaapdagboek</h1>
+ 
+         <!-- Slaapdagboek Sectie -->
+         <section id="sleep-journal">
+             <h1>Slaapdagboek</h1>
+ 
+             <!-- Bedtijd Sectie -->
+             <section id="bedtime-section">
+                 <h3>Hoelaat ging je naar bed?</h3>
+                 <div class="clock-container">
+                     <div class="clock bedtime-clock">
+                         <div class="hour-hand"></div>
+                         <div class="center-dot"></div>
+                     </div>
+                     <p id="bedtime-display">00:00</p>
+                 </div>
+             </section>
+ 
+             <!-- Wakker Tijd Sectie -->
+             <section id="wake-time-section">
+                 <h3>Hoelaat werd je wakker?</h3>
+                 <div class="clock-container">
+                     <div class="clock wake-time-clock">
+                         <div class="hour-hand"></div>
+                         <div class="center-dot"></div>
+                     </div>
+                     <p id="wake-time-display">00:00</p>
+                 </div>
+             </section>
+ 
+             <!-- Aantal Keren Wakker Sectie -->
+             <section id="night-wakings-section">
+                 <label for="night-wakings">Hoe vaak werd je 's nachts wakker?</label>
+                 <input type="number" id="night-wakings" min="0" placeholder="Bijv. 2">
+                 
+                 <label for="wake-duration">Hoeveel minuten was je wakker in totaal?</label>
+                 <input type="number" id="wake-duration" min="0" placeholder="Bijv. 15">
+             </section>
+ 
+             <!-- Extra Vragen Sectie -->
+             <section id="sleep-form">
+                 <label for="sleep-quality">Hoe was je slaapkwaliteit?</label>
+                 <select id="sleep-quality">
+                     <option value="excellent">Uitstekend</option>
+                     <option value="good">Goed</option>
+                     <option value="average">Gemiddeld</option>
+                     <option value="poor">Slecht</option>
+                 </select>
+ 
+                 <label for="alcohol-amount">Aantal glazen alcohol (avond):</label>
+                 <input type="number" id="alcohol-amount" min="0" placeholder="Bijv. 2">
+ 
+                 <label for="caffeine-amount">Aantal koppen koffie (avond):</label>
+                 <input type="number" id="caffeine-amount" min="0" placeholder="Bijv. 1">
+ 
+                 <label for="medication-name">Naam van eventuele slaapmedicatie:</label>
+                 <input type="text" id="medication-name" placeholder="Bijv. Melatonine">
+ 
+                 <label for="medication-amount">Hoeveelheid slaapmedicatie:</label>
+                 <input type="number" id="medication-amount" min="0" placeholder="Bijv. 5 mg">
+ 
+                 <label for="nap-duration">Duur van eventuele dutjes (in minuten):</label>
+                 <input type="number" id="nap-duration" min="0" placeholder="Bijv. 30">
+ 
+                 <button id="save-sleep-data">Sla Slaapgegevens op</button>
+             </section>
+ 
+             <!-- Grafiek Sectie -->
+             <section id="sleep-chart-section" style="display: none;">
+                 <h2>Je Slaapgegevens</h2>
+                 <canvas id="sleepChart"></canvas>
+             </section>
+         </section>
+     </div>
+ </body>
+ </html>
+ 
+
+
+    <!-- adem Sectie --> 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ademhalingsoefening</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <section id="breathing-exercise">
+        <h2>Ademhalingsoefening - 4-7-8 Techniek</h2>
+        <p id="breathing-status">Volg de ademhaling:</p>
+        <ul>
+            <li><strong>Inademen</strong> door je neus voor <strong>4 seconden</strong></li>
+            <li><strong>Vasthouden</strong> voor <strong>7 seconden</strong></li>
+            <li><strong>Uitademen</strong> door je mond voor <strong>8 seconden</strong></li>
+        </ul>
+        <div id="breath-circle"></div>
+        <button id="start-breathing-btn">Start Ademhalingsoefening</button>
+        <button id="stop-breathing-btn" disabled>Stop Ademhalingsoefening</button>
+    </section>
+</body>
+</html>
+
+    
+    
+    <!-- Firebase Configuratie -->
+    <script>
+        // Firebase configuratie
+        const firebaseConfig = {
+            apiKey: "AIzaSyAV9vovz1BN-Gy00ovT5h1mJCFyswMEMg4",
+            authDomain: "mentalegezondheidapp.firebaseapp.com",
+            projectId: "mentalegezondheidapp",
+            storageBucket: "mentalegezondheidapp.appspot.com",
+            messagingSenderId: "633303886567",
+            appId: "1:633303886567:web:a64c0786434ad933ed5042"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="script.js"></script>
+    </body>
+    </html>
+
+   
 
         <!-- Negatieve Gedachte Herformuleren -->
         <section id="thought-reframing">
@@ -33,13 +253,13 @@
                 <option value="Ik ben niet goed genoeg.">Ik ben niet goed genoeg.</option>
                 <option value="Ik maak altijd fouten.">Ik maak altijd fouten.</option>
                 <option value="Ik heb geen controle over mijn leven.">Ik heb geen controle over mijn leven.</option>
-                <option value="Mensen vinden mij niet aardig.">Mensen vinden mij niet aardig.</option>
+                <option value="Ik ben altijd te laat.">Ik ben altijd te laat.</option>
+                <option value="Ik ben niet slim genoeg.">Ik ben niet slim genoeg.</option>
                 <option value="Ik zal nooit succesvol zijn.">Ik zal nooit succesvol zijn.</option>
-                <option value="Ik ben te gestrest om iets te bereiken.">Ik ben te gestrest om iets te bereiken.</option>
-                <option value="Ik faal overal in.">Ik faal overal in.</option>
-                <option value="Mijn toekomst ziet er somber uit.">Mijn toekomst ziet er somber uit.</option>
-                <option value="Ik voel me waardeloos.">Ik voel me waardeloos.</option>
-                <option value="Niemand begrijpt mij.">Niemand begrijpt mij.</option>
+                <option value="Niemand houdt van me.">Niemand houdt van me.</option>
+                <option value="Ik ben niet aantrekkelijk.">Ik ben niet aantrekkelijk.</option>
+                <option value="Ik ben slecht in wat ik doe.">Ik ben slecht in wat ik doe.</option>
+                <option value="Ik kan nooit veranderen.">Ik kan nooit veranderen.</option>
             </select>
             <input type="text" id="reframe-input" placeholder="Of voer je eigen gedachte in...">
             <button onclick="getAIReframe()">Herformuleer Gedachte</button>
@@ -53,42 +273,49 @@
                 <option value="">Kies een voorbeeldvraag...</option>
                 <option value="Hoe kan ik omgaan met stress?">Hoe kan ik omgaan met stress?</option>
                 <option value="Wat kan ik doen om mijn zelfvertrouwen te vergroten?">Wat kan ik doen om mijn zelfvertrouwen te vergroten?</option>
-                <option value="Hoe verminder ik mijn angstgevoelens?">Hoe verminder ik mijn angstgevoelens?</option>
-                <option value="Wat zijn enkele effectieve methoden voor meditatie?">Wat zijn enkele effectieve methoden voor meditatie?</option>
-                <option value="Hoe kan ik beter omgaan met kritiek?">Hoe kan ik beter omgaan met kritiek?</option>
-                <option value="Wat kan ik doen tegen negatieve gedachten?">Wat kan ik doen tegen negatieve gedachten?</option>
-                <option value="Hoe verbeter ik mijn concentratie?">Hoe verbeter ik mijn concentratie?</option>
-                <option value="Wat zijn manieren om mijn slaap te verbeteren?">Wat zijn manieren om mijn slaap te verbeteren?</option>
-                <option value="Hoe ga ik om met perfectionisme?">Hoe ga ik om met perfectionisme?</option>
-                <option value="Wat zijn tips om minder piekerig te zijn?">Wat zijn tips om minder piekerig te zijn?</option>
+                <option value="Hoe kan ik beter omgaan met mijn angst?">Hoe kan ik beter omgaan met mijn angst?</option>
+                <option value="Wat zijn manieren om meer mindfulness toe te passen in mijn dagelijks leven?">Wat zijn manieren om meer mindfulness toe te passen in mijn dagelijks leven?</option>
+                <option value="Hoe kan ik negatieve gedachten ombuigen naar positieve?">Hoe kan ik negatieve gedachten ombuigen naar positieve?</option>
+                <option value="Wat kan ik doen om mijn relaties te verbeteren?">Wat kan ik doen om mijn relaties te verbeteren?</option>
+                <option value="Hoe kan ik beter omgaan met stressvolle situaties?">Hoe kan ik beter omgaan met stressvolle situaties?</option>
+                <option value="Wat zijn manieren om mijn emotionele intelligentie te verhogen?">Wat zijn manieren om mijn emotionele intelligentie te verhogen?</option>
+                <option value="Hoe kan ik mijn doelen bereiken zonder me overweldigd te voelen?">Hoe kan ik mijn doelen bereiken zonder me overweldigd te voelen?</option>
+                <option value="Wat zijn technieken om mijn zelfdiscipline te verbeteren?">Wat zijn technieken om mijn zelfdiscipline te verbeteren?</option>
             </select>
             <input type="text" id="user-question" placeholder="Of voer je eigen vraag in...">
             <button onclick="askAIQuestion()">Stel Vraag</button>
             <div id="ai-response"></div>
         </section>
 
-        <!-- Ademhalingsoefening -->
-        <section id="breathing-exercise">
-            <h2>Ademhalingsoefening</h2>
-            <p>Volg de ademhaling: inademen, vasthouden, en uitademen.</p>
-            <div id="breath-circle"></div>
-            <button onclick="startBreathingExercise()">Start Ademhalingsoefening</button>
-        </section>
+       <!-- Extra sectie voor voortgang -->
+<section id="result-section" style="display: none;">
+    <label for="result-feedback">Heb je het advies toegepast? (Ja/Nee)</label>
+    <select id="result-feedback">
+        <option value="">Selecteer...</option>
+        <option value="ja">Ja</option>
+        <option value="nee">Nee</option>
+    </select>
+    <textarea id="result-comments" placeholder="Beschrijf wat je hebt ervaren..."></textarea>
+    <button onclick="saveProgress()">Bewaar Voortgang </button>
+    <!-- Laadbericht dat zichtbaar wordt als de voortgang wordt opgeslagen -->
+    <p id="loading-message" style="display: none;">Bezig met het ophalen van je advies, even geduld...</p>
+</section>
+
+<!-- Sectie voor het tonen van voortgang -->
+<section id="follow-up-advice" style="display:none;">
+    <h3>Vervolg Advies</h3>
+    <p id="advice-text"></p>
+    <ul id="tools-list"></ul>  <!-- Lijst van tools -->
+
+</div>
+</section>
+    
 
         <!-- Rustgevende Afbeeldingen -->
         <section id="calming-images">
             <h2>Rustgevende Afbeeldingen</h2>
             <img src="http://www.cursus-fotografie.nl/userfiles/files/lol/pdf/pdf%202/56588969-Fotobehang-Rustgevende-waterpartij.jpg" alt="Rustgevende waterpartij" width="300">
             <img src="http://www.cursus-fotografie.nl/userfiles/files/lol/pdf/pdf%202/sunset-4122604_640.jpg" alt="Zonsondergang" width="300">
-        </section>
-
-        <!-- Rustgevende Muziek -->
-        <section id="calming-music">
-            <h2>Luister naar Rustgevende Muziek</h2>
-            <audio controls>
-                <source src="http://www.cursus-fotografie.nl/userfiles/files/lol/pdf/pdf%202/relaxing-music-119247.mp3" type="audio/mpeg">
-                Uw browser ondersteunt het audio-element niet.
-            </audio>
         </section>
 
         <!-- Rustgevende Video's -->
@@ -99,12 +326,216 @@
                 Uw browser ondersteunt het video-element niet.
             </video>
             <video controls width="400">
-                <source src="http://www.cursus-fotografie.nl/userfiles/files/lol/pdf/pdf%202/pdf4/download%20(3).mp4" type="video/mp4">
+                <source src="https://burnoutcoach.nu/wp-content/uploads/2024/11/Mindfulness-meditatie-voor-positieve-energie-‐-Gemaakt-met-Clipchamp.mp4" type="video/mp4">
                 Uw browser ondersteunt het video-element niet.
             </video>
+            
+        </section>
+
+        <!-- Rustgevende Muziek -->
+        <section id="calming-music">
+            <h2>Luister naar Rustgevende Muziek</h2>
+            <audio controls>
+                <source src="http://www.cursus-fotografie.nl/userfiles/files/lol/pdf/pdf%202/relaxing-music-119247.mp3" type="audio/mpeg">
+                Uw browser ondersteunt het audio-element niet.
+            </audio>
         </section>
     </div>
+
+    <!-- Firebase Configuratie en Google Sign-In functie -->
+    <script>
+// Firebase configuratie
+const firebaseConfig = {
+            apiKey: "AIzaSyAV9vovz1BN-Gy00ovT5h1mJCFyswMEMg4",
+            authDomain: "mentalegezondheidapp.firebaseapp.com",
+            projectId: "mentalegezondheidapp",
+            storageBucket: "mentalegezondheidapp.appspot.com", 
+            messagingSenderId: "633303886567",
+            appId: "1:633303886567:web:a64c0786434ad933ed5042"
+        };
+
+        // Firebase initialiseren
+        firebase.initializeApp(firebaseConfig);
+
+        // Google Sign-In functie
+        const auth = firebase.auth();
+        const provider = new firebase.auth.GoogleAuthProvider();
+
+        document.getElementById("google-signin-btn").addEventListener("click", async () => {
+            try {
+                const result = await auth.signInWithPopup(provider);
+                const user = result.user;
+                if (user) {
+                    alert(`Welkom ${user.displayName}`);
+                    document.getElementById("mood-check").style.display = "block"; 
+                    document.getElementById("google-signin-btn").style.display = "none"; 
+                    loadThoughts();  // Laad de gedachten na inloggen
+                    loadProgress(); // Laad voortgang na inloggen
+                }
+            } catch (error) {
+                console.error("Fout bij Google inloggen:", error);
+                alert("Er is een fout opgetreden bij het inloggen.");
+            }
+        });
+
+        // Functie om gedachten op te slaan in Firestore
+        async function saveThought() {
+            const thoughtInput = document.getElementById("thought-input").value;
+            const user = firebase.auth().currentUser;
+
+            if (thoughtInput && user) {
+                const thoughtRef = firebase.firestore().collection("users").doc(user.uid).collection("thoughts");
+                try {
+                    await thoughtRef.add({
+                        thought: thoughtInput,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    });
+                    document.getElementById("thought-input").value = "";  // Wis het invoerveld
+                    loadThoughts();  // Laad de gedachten opnieuw
+                } catch (error) {
+                    console.error("Fout bij opslaan gedachte:", error);
+                }
+            } else {
+                alert("Log eerst in om je gedachte op te slaan.");
+            }
+        }
+
+        // Functie om voortgang op te halen uit Firestore
+async function loadProgress() {
+    const user = firebase.auth().currentUser;  // Controleer of er een ingelogde gebruiker is
+    const progressList = document.getElementById("progress-list");
+
+    // Als er geen gebruiker is ingelogd, vraag dan om inloggen
+    if (!user) {
+        alert("Je moet inloggen om voortgang te zien.");
+        return; // Stop de uitvoering als de gebruiker niet is ingelogd
+    }
+
+    // Als de gebruiker is ingelogd, haal dan voortgang op
+    if (user) {
+        const progressRef = firebase.firestore().collection("users").doc(user.uid).collection("progress");
+
+        try {
+            const querySnapshot = await progressRef.orderBy("timestamp", "desc").get();
+            progressList.innerHTML = "";  // Maak de lijst leeg voordat je nieuwe gegevens toevoegt
+
+            if (querySnapshot.empty) {
+                console.log("Geen voortgang gevonden.");
+                const noProgressMessage = document.createElement("li");
+                noProgressMessage.textContent = "Er is nog geen voortgang opgeslagen.";
+                progressList.appendChild(noProgressMessage);
+            }
+
+            querySnapshot.forEach(doc => {
+                const data = doc.data();
+                const listItem = document.createElement("li");
+                listItem.textContent = `Feedback: ${data.feedback}, Opmerkingen: ${data.comments}, Datum: ${data.timestamp.toDate().toLocaleString()}`;
+                progressList.appendChild(listItem);
+            });
+
+        } catch (error) {
+            console.error("Fout bij het ophalen van voortgang:", error);
+        }
+    }
+}
+
+
+        // Functie om voortgang op te slaan
+        
+async function saveProgress() {
+    const user = firebase.auth().currentUser;
+    const feedback = document.getElementById("result-feedback").value;
+    const comments = document.getElementById("result-comments").value;
+
+    if (user && feedback && comments) {
+        const progressRef = firebase.firestore().collection("users").doc(user.uid).collection("progress");
+        try {
+            await progressRef.add({
+                feedback: feedback,
+                comments: comments,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()  // Voeg een timestamp toe voor het sorteren van de voortgang
+            });
+            alert("Voortgang opgeslagen!");
+            loadProgress();  // Laad de voortgang opnieuw om de nieuwe voortgang weer te geven
+        } catch (error) {
+            console.error("Fout bij opslaan voortgang:", error);
+        }
+    } else {
+        alert("Vul alle velden in om voortgang op te slaan.");
+    }
+}
+
+// Functie om voortgang op te halen uit Firestore
+async function loadProgress() {
+    const user = firebase.auth().currentUser;
+    const progressList = document.getElementById("progress-list");
+
+    if (user) {
+        const progressRef = firebase.firestore().collection("users").doc(user.uid).collection("progress");
+
+        try {
+            const querySnapshot = await progressRef.orderBy("timestamp", "desc").get();
+            progressList.innerHTML = "";  // Maak de lijst leeg voordat je nieuwe gegevens toevoegt
+
+            if (querySnapshot.empty) {
+                console.log("Geen voortgang gevonden.");
+                const noProgressMessage = document.createElement("li");
+                noProgressMessage.textContent = "Er is nog geen voortgang opgeslagen.";
+                progressList.appendChild(noProgressMessage);
+            }
+
+            querySnapshot.forEach(doc => {
+                const data = doc.data();
+                const listItem = document.createElement("li");
+                listItem.textContent = `Feedback: ${data.feedback}, Opmerkingen: ${data.comments}, Datum: ${data.timestamp.toDate().toLocaleString()}`;
+                progressList.appendChild(listItem);
+            });
+
+            // Toon de voortgangslog sectie als er voortgang is
+            if (progressList.children.length > 0) {
+                document.getElementById("progress-log").style.display = "block";
+                generateFollowUpAdvice(progressList);  // Genereer advies op basis van de voortgang
+            }
+
+        } catch (error) {
+            console.error("Fout bij het ophalen van voortgang:", error);
+        }
+    }
+}
+
+// Functie om vervolgadvies te genereren
+function generateFollowUpAdvice(progressList) {
+    const lastProgress = progressList.children[0]; // De meest recente voortgang
+    const comment = lastProgress.textContent.split(", ")[1].split(": ")[1].toLowerCase();  // Haal de comment op en zet deze om naar kleine letters
+
+    let advice = "";
+
+    if (comment.includes("help")) {
+        advice = "Het lijkt erop dat je behoefte hebt aan extra hulp. Probeer opnieuw ademhalingsoefeningen of het herformuleren van je gedachten.";
+    } else if (comment.includes("moe")) {
+        advice = "Je hebt aangegeven moe te zijn. Het kan nuttig zijn om voldoende slaap te krijgen en gezonde gewoonten te volgen.";
+    } else if (comment.includes("top")) {
+        advice = "Fijn dat je je goed voelt! Blijf door gaan met de positieve gewoonten die je hebt opgebouwd.";
+    } else {
+        advice = "Blijf werken aan je voortgang, probeer bewust te blijven van je gedachten en emoties.";
+    }
+
+    // Toon het vervolgadvies
+    document.getElementById("advice-text").textContent = advice;
+    document.getElementById("follow-up-advice").style.display = "block";  // Zorg ervoor dat het advies zichtbaar is
+}
+
+// Initialiseer de gedachtenlogboeken en voortgang bij inloggen
+window.onload = () => {
+    loadThoughts();  // Laad de gedachten van de gebruiker
+    loadProgress();  // Laad de voortgang van de gebruiker
+};
+    </script>
+
+    <!-- Client-side JavaScript bestand -->
     <script src="script.js"></script>
 </body>
 </html>
+
+
 
