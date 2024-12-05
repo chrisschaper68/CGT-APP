@@ -1,45 +1,53 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const nodemailer = require('nodemailer'); // Nodemailer voor e-mail
-const getReframe = require('./api/getReframe'); // API voor gedachtenherformulering
-const askQuestion = require('./api/askQuestion'); // API voor vraagmodule
-const admin = require('firebase-admin'); // Firebase Admin SDK
-const cors = require('cors'); // CORS middleware om verzoeken van andere domeinen toe te staan
-const axios = require('axios'); // Voor de OpenAI API-aanroepen
+const nodemailer = require('nodemailer');
+const getReframe = require('./api/getReframe');
+const askQuestion = require('./api/askQuestion');
+const admin = require('firebase-admin');
+const cors = require('cors');
+const axios = require('axios');
 
-// Initialiseer Firebase Admin
-const serviceAccount = require('./firebase-service-account.json');
+// Initialiseer Firebase Admin met omgevingsvariabelen
+const serviceAccount = {
+  "type": process.env.FIREBASE_TYPE,
+  "project_id": process.env.FIREBASE_PROJECT_ID,
+  "private_key_id": process.env.FIREBASE_PRIVATE_KEY_ID,
+  "private_key": process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+  "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+  "client_id": process.env.FIREBASE_CLIENT_ID,
+  "auth_uri": process.env.FIREBASE_AUTH_URI,
+  "token_uri": process.env.FIREBASE_TOKEN_URI,
+  "auth_provider_x509_cert_url": process.env.FIREBASE_AUTH_PROVIDER_CERT_URL,
+  "client_x509_cert_url": process.env.FIREBASE_CLIENT_CERT_URL
+};
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://mentalegezondheidapp.firebaseio.com" // Vervang dit met jouw URL
+    databaseURL: process.env.FIREBASE_DATABASE_URL
 });
 
 const app = express();
-const PORT = 5000; // Poort direct instellen zonder .env bestand
+const PORT = process.env.PORT || 5000;
 
-// Gebruik CORS om verzoeken van andere domeinen toe te staan
+// Middleware
 app.use(cors());
-
-// Gebruik body-parser om JSON-gegevens te verwerken
 app.use(bodyParser.json());
 
-// Stel de static map in, zodat je statische bestanden kunt bedienen
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
+// Statische bestanden voor afbeeldingen en andere resources
+app.use('/images', express.static(path.join(__dirname, 'dist', 'images')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-
-// Route voor de hoofdpagina (index.html)
+// Routes
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-// Nodemailer transporter configuratie
+// Nodemailer configuratie
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL_USER, // Zorg dat dit in je .env staat
-        pass: process.env.EMAIL_PASSWORD // Gebruik een app-specifiek wachtwoord
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
     }
 });
 
@@ -48,8 +56,8 @@ app.post('/api/getReframe', getReframe);
 
 // Vraag module via AI
 app.post('/api/getAnswer', askQuestion);
+
 // Slaapdagboek API
-// Slaapdagboek opslaan
 app.post('/api/sleep-journal', async (req, res) => {
     const {
         userId,
@@ -126,7 +134,6 @@ app.get('/api/get-sleep-data', async (req, res) => {
     }
 });
 
-
 // Voeg een nieuwe route toe voor AI-advies
 app.post('/api/getAIAdvice', async (req, res) => {
     const { progress, moods, thoughts } = req.body;
@@ -158,29 +165,16 @@ app.post('/api/getAIAdvice', async (req, res) => {
         }
     ];
 
-    // Debugging: Log de ontvangen gegevens van de frontend
-    console.log("Ontvangen gegevens van frontend:", { progress, moods, thoughts });
-
-    // Controleer of de ontvangen gegevens geldig zijn
     if (!progress || !moods || !thoughts) {
         return res.status(400).json({ message: "Vereiste gegevens ontbreken. Zorg dat progress, moods en thoughts zijn ingevuld." });
     }
 
     try {
-        // Beperk de hoeveelheid data die naar OpenAI wordt gestuurd
-        const recentProgress = progress.slice(-10); // Laatste 10 items
-        const recentMoods = moods.slice(-10); // Laatste 10 items
-        const recentThoughts = thoughts.slice(-10); // Laatste 10 items
+        const recentProgress = progress.slice(-10); 
+        const recentMoods = moods.slice(-10); 
+        const recentThoughts = thoughts.slice(-10); 
 
-        // Debugging: Log de beperkte gegevens
-        console.log("OpenAI-aanroep gestart met beperkte gegevens:", {
-            recentProgress,
-            recentMoods,
-            recentThoughts
-        });
-
-        // OpenAI API-aanroep
-        const OPENAI_API_KEY = "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";
+        const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
         const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
         const aiResponse = await axios.post(OPENAI_API_URL, {
@@ -207,23 +201,15 @@ app.post('/api/getAIAdvice', async (req, res) => {
             }
         });
 
-        // Debugging: Log het antwoord van OpenAI
-        console.log("OpenAI-response ontvangen:", aiResponse.data);
-
-        // Verwerk de respons van OpenAI
         const aiAdvice = aiResponse.data.choices[0]?.message?.content?.trim();
         if (!aiAdvice) {
             throw new Error("Geen advies ontvangen van OpenAI.");
         }
 
-        // Stuur het advies en de hulpmiddelen terug
         res.json({ advice: aiAdvice, tools: toolsList });
 
     } catch (error) {
-        // Debugging: Log de foutdetails
         console.error("Fout bij het aanroepen van de OpenAI API:", error.response?.data || error.message);
-
-        // Stuur een duidelijke foutmelding terug naar de frontend
         res.status(500).json({
             message: "Er is een fout opgetreden bij het ophalen van AI-advies.",
             error: error.response?.data || error.message
@@ -231,8 +217,7 @@ app.post('/api/getAIAdvice', async (req, res) => {
     }
 });
 
-
-// Voeg een nieuwe route toe voor het versturen van een e-mail met Firebase-data
+// Verstuur herinneringen via e-mail
 app.post('/api/sendReminderWithDetails', async (req, res) => {
     const { email, userId } = req.body;
 
@@ -241,7 +226,6 @@ app.post('/api/sendReminderWithDetails', async (req, res) => {
     }
 
     try {
-        // Haal gebruikersgegevens op uit Firestore
         const userDoc = await admin.firestore().collection('users').doc(userId).get();
 
         if (!userDoc.exists) {
@@ -271,21 +255,28 @@ app.post('/api/sendReminderWithDetails', async (req, res) => {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
-            subject: 'Dagelijkse herinnering en tools',
-            html: emailContent,
+            subject: 'Dagelijkse welzijnsherinnering',
+            html: emailContent
         };
 
-        // Verstuur de e-mail
         await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: 'Herinnering succesvol verstuurd.' });
 
-        res.status(200).json({ message: "Herinnering verzonden met details" });
     } catch (error) {
-        console.error("Fout bij het versturen van e-mail:", error);
-        res.status(500).json({ message: "Er is een fout opgetreden", error });
+        console.error('Fout bij versturen van e-mail:', error);
+        res.status(500).json({ message: 'Er is een fout opgetreden bij het versturen van de herinnering.' });
     }
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Interne serverfout!' });
 });
 
 // Start de server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server draait op poort ${PORT}`);
 });
+
+module.exports = app;
