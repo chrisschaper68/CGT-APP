@@ -9,13 +9,10 @@
   "routes": [
     {
       "src": "/api/getReframe",
-      "dest": "api/getReframe.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "functions/server.js"
+      "dest": "/api/getReframe.js"
     }
   ]
 }
+
 
 
