@@ -1,4 +1,3 @@
-
 /// Stemming Check-in
 document.getElementById("mood-meter").addEventListener("input", function () {
     const moodValue = Number(this.value);
