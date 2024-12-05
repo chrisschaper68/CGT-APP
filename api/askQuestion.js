@@ -1,45 +1,47 @@
-export default async function handler(req, res) {
-    const apiKey = process.env.OPENAI_API_KEY;
+// api/askQuestion.js
+const { Configuration, OpenAIApi } = require('openai');
+const dotenv = require('dotenv');
 
-    if (!apiKey) {
-        return res.status(500).json({ error: "API-sleutel niet gevonden in omgevingsvariabele." });
-    }
+// Configuratie van omgevingsvariabelen
+dotenv.config();
 
-    const question = req.body.question;
+const openai = new OpenAIApi(
+    new Configuration({
+        apiKey: process.env.OPENAI_API_KEY,
+    })
+);
+
+module.exports = async function (req, res) {
+    const { question } = req.body;
+
+    // Controleer of de vraag geldig is en stuur een foutmelding als er geen vraag is
     if (!question) {
-        return res.status(400).json({ error: "Geen vraag ingevoerd om te beantwoorden." });
+        return res.status(400).json({ error: "Geen vraag ontvangen." });
     }
 
     try {
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${apiKey}`
-            },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [{ 
-                    role: "user", 
-                    content: `Je bent een ervaren psycholoog en burnoutcoach. Geef een gedetailleerd en ondersteunend antwoord op deze vraag: "${question}". Zorg dat het antwoord diepgaand, empathisch en nuttig is.` 
-                }],
-                max_tokens: 1000  // Verhoogd naar maximale lengte voor lange antwoorden
-            })
+        const response = await openai.createChatCompletion({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: question }]
         });
 
-        const data = await response.json();
-
-        if (response.ok) {
-            const answer = data.choices[0].message.content;
-            res.status(200).json({ answer });
-        } else {
-            console.error("Fout bij API-aanroep:", data);
-            res.status(response.status).json({ error: data.error.message });
-        }
+        // Stuur het antwoord terug als JSON
+        res.json({ answer: response.data.choices[0].message.content });
     } catch (error) {
-        console.error("API-aanroep fout:", error);
-        res.status(500).json({ error: "Er is een fout opgetreden bij de API-aanroep." });
+        console.error("API Error in askQuestion:", error.response ? error.response.data : error.message);
+
+        // Controleer het type fout en stuur een specifieke status terug
+        if (error.response) {
+            res.status(error.response.status).json({
+                error: "Fout bij API-aanroep.",
+                details: error.response.data
+            });
+        } else {
+            res.status(500).json({ error: "Interne serverfout." });
+        }
     }
-}
+};
+
+
 
 
