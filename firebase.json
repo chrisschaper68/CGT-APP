@@ -1,0 +1,32 @@
+
+{
+  "hosting": {
+    "public": "dist",  // Dit geeft de map aan die gedeployed moet worden (deze bevat je build-bestanden)
+    "ignore": [
+      "firebase.json", 
+      "**/.*",           // Negeer verborgen bestanden
+      "**/node_modules/**"  // Negeer de node_modules map
+    ],
+    "rewrites": [
+      {
+        "source": "**",     // Dit zorgt ervoor dat alle aanvragen naar de index.html gaan (single-page app)
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "functions": {
+    "source": "functions",  // Hier zou je functies staan, maar als je geen functies gebruikt, kun je dit weglaten.
+    "predeploy": [
+      "npm --prefix \"$RESOURCE_DIR\" install"
+    ]
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "hosting": {
+      "port": 5000
+    }
+  }
+}
+
